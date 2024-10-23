@@ -1,0 +1,59 @@
+/* External CSS file: style/style.css */
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+#diagnosisForm .form-select {
+    padding: 10px;
+    font-size: 1rem;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2rem;
+}
+
+#result {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
