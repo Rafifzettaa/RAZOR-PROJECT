@@ -1,121 +1,312 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="id">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Pakar Diagnosis HIV</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style/style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Diagnosa Gejala HIV/AIDS</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
 
-<body>
+    <body>
+        <div class="container mt-5">
+            <h2>Diagnosa Gejala HIV/AIDS</h2>
+            <form id="diagnosisForm">
+                <div class="form-group">
+                    <label for="riskGroup">Kelompok Risiko:</label>
+                    <select id="riskGroup" class="form-control" required>
+                        <option value="" disabled selected>Pilih</option>
+                        <option value="tinggi">Tinggi</option>
+                        <option value="sedang">Sedang</option>
+                        <option value="rendah">Rendah</option>
+                        <option value="tidak ada">Tidak Ada</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="weightLoss">Penurunan Berat Badan:</label>
+                    <select id="weightLoss" class="form-control" required>
+                        <option value="" disabled selected>Pilih</option>
+                        <option value="parah">Parah</option>
+                        <option value="sedang">Sedang</option>
+                        <option value="ringan">Ringan</option>
+                        <option value="tidak ada">Tidak Ada</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fever">Demam:</label>
+                    <select id="fever" class="form-control" required>
+                        <option value="" disabled selected>Pilih</option>
+                        <option value="parah">Parah</option>
+                        <option value="sedang">Sedang</option>
+                        <option value="ringan">Ringan</option>
+                        <option value="tidak ada">Tidak Ada</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="infection">Infeksi:</label>
+                    <select id="infection" class="form-control" required>
+                        <option value="" disabled selected>Pilih</option>
+                        <option value="parah">Parah</option>
+                        <option value="sedang">Sedang</option>
+                        <option value="ringan">Ringan</option>
+                        <option value="tidak ada">Tidak Ada</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rash">Ruam Kulit:</label>
+                    <select id="rash" class="form-control" required>
+                        <option value="" disabled selected>Pilih</option>
+                        <option value="parah">Parah</option>
+                        <option value="sedang">Sedang</option>
+                        <option value="ringan">Ringan</option>
+                        <option value="tidak ada">Tidak Ada</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="swollenLymphNodes">Kelenjar Getah Bening Membengkak:</label>
+                    <select id="swollenLymphNodes" class="form-control" required>
+                        <option value="" disabled selected>Pilih</option>
+                        <option value="parah">Parah</option>
+                        <option value="sedang">Sedang</option>
+                        <option value="ringan">Ringan</option>
+                        <option value="tidak ada">Tidak Ada</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="chronicFatigue">Kelelahan Kronis:</label>
+                    <select id="chronicFatigue" class="form-control" required>
+                        <option value="" disabled selected>Pilih</option>
+                        <option value="parah">Parah</option>
+                        <option value="sedang">Sedang</option>
+                        <option value="ringan">Ringan</option>
+                        <option value="tidak ada">Tidak Ada</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cough">Batuk:</label>
+                    <select id="cough" class="form-control" required>
+                        <option value="" disabled selected>Pilih</option>
+                        <option value="parah">Parah</option>
+                        <option value="sedang">Sedang</option>
+                        <option value="ringan">Ringan</option>
+                        <option value="tidak ada">Tidak Ada</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="diarrhea">Diare:</label>
+                    <select id="diarrhea" class="form-control" required>
+                        <option value="" disabled selected>Pilih</option>
+                        <option value="parah">Parah</option>
+                        <option value="sedang">Sedang</option>
+                        <option value="ringan">Ringan</option>
+                        <option value="tidak ada">Tidak Ada</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="nightSweats">Keringat Malam:</label>
+                    <select id="nightSweats" class="form-control" required>
+                        <option value="" disabled selected>Pilih</option>
+                        <option value="parah">Parah</option>
+                        <option value="sedang">Sedang</option>
+                        <option value="ringan">Ringan</option>
+                        <option value="tidak ada">Tidak Ada</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Diagnosa</button>
+            </form>
 
-    <div class="container mt-5">
-        <h1 class="text-center">Sistem Pakar Diagnosis HIV</h1>
-        <p class="text-center">Pilih tingkat keparahan gejala yang Anda alami untuk mendapatkan diagnosis yang lebih
-            akurat.</p>
+            <div id="result" class="alert d-none mt-3"></div>
+        </div>
 
-        <!-- Form untuk input gejala dengan tingkat keparahan -->
-        <form id="diagnosisForm">
-            <div class="mb-3">
-                <label for="riskGroup" class="form-label">Kelompok Risiko</label>
-                <select class="form-select" id="riskGroup">
-                    <option value="tidak ada">Tidak Ada</option>
-                    <option value="rendah">Rendah</option>
-                    <option value="sedang">Sedang</option>
-                    <option value="tinggi">Tinggi</option>
-                </select>
-            </div>
 
-            <div class="mb-3">
-                <label for="fever" class="form-label">Demam</label>
-                <select class="form-select" id="fever">
-                    <option value="tidak ada">Tidak Ada</option>
-                    <option value="ringan">Ringan</option>
-                    <option value="sedang">Sedang</option>
-                    <option value="parah">Parah</option>
-                </select>
-            </div>
 
-            <div class="mb-3">
-                <label for="rash" class="form-label">Ruam Kulit</label>
-                <select class="form-select" id="rash">
-                    <option value="tidak ada">Tidak Ada</option>
-                    <option value="ringan">Ringan</option>
-                    <option value="sedang">Sedang</option>
-                    <option value="parah">Parah</option>
-                </select>
-            </div>
 
-            <div class="mb-3">
-                <label for="weightLoss" class="form-label">Penurunan Berat Badan</label>
-                <select class="form-select" id="weightLoss">
-                    <option value="tidak ada">Tidak Ada</option>
-                    <option value="ringan">Ringan</option>
-                    <option value="sedang">Sedang</option>
-                    <option value="parah">Parah</option>
-                </select>
-            </div>
+        <script>
+            const form = document.getElementById("diagnosisForm");
+            const resultDiv = document.getElementById("result");
 
-            <div class="mb-3">
-                <label for="infection" class="form-label">Infeksi Berat atau Berulang (misalnya pneumonia)</label>
-                <select class="form-select" id="infection">
-                    <option value="tidak ada">Tidak Ada</option>
-                    <option value="ringan">Ringan</option>
-                    <option value="sedang">Sedang</option>
-                    <option value="parah">Parah</option>
-                </select>
-            </div>
+            const rules = [
+                {
+                    conditions: {
+                        riskGroup: "rendah",
+                        weightLoss: "parah",
+                        fever: "parah",
+                        infection: "parah",
+                        rash: "parah",
+                        swollenLymphNodes: "parah",
+                        chronicFatigue: "parah",
+                        cough: "parah",
+                        diarrhea: "parah",
+                        nightSweats: "parah",
+                    },
+                    conclusion: "Anda terindikasi berada pada tahap <strong>AIDS (Stadium 4)</strong>. Segera periksakan ke dokter.",
+                },
+                {
+                    conditions: {
+                        riskGroup: "rendah",
+                        weightLoss: "parah",
+                        fever: "parah",
+                        infection: "sedang",
+                        rash: "sedang",
+                        swollenLymphNodes: "sedang",
+                        chronicFatigue: "parah",
+                        cough: "sedang",
+                        diarrhea: "sedang",
+                        nightSweats: "sedang",
+                    },
+                    conclusion: "Anda terindikasi berada pada tahap <strong>HIV Stadium 3</strong>. Segera konsultasi dengan dokter.",
+                },
+                {
+                    conditions: {
+                        riskGroup: "rendah",
+                        weightLoss: "parah",
+                        fever: "sedang",
+                        infection: "sedang",
+                        rash: "sedang",
+                        swollenLymphNodes: "sedang",
+                        chronicFatigue: "parah",
+                        cough: "sedang",
+                        diarrhea: "sedang",
+                        nightSweats: "sedang",
+                    },
+                    conclusion: "Anda terindikasi berada pada tahap <strong>HIV Stadium 2</strong>. Segera lakukan konsultasi ke dokter.",
+                },
+                {
+                    conditions: {
+                        riskGroup: "rendah",
+                        weightLoss: "sedang",
+                        fever: "sedang",
+                        infection: "sedang",
+                        rash: "sedang",
+                        swollenLymphNodes: "sedang",
+                        chronicFatigue: "sedang",
+                        cough: "tidak ada",
+                        diarrhea: "tidak ada",
+                        nightSweats: "tidak ada",
+                    },
+                    conclusion: "Anda terindikasi berada pada tahap <strong>HIV Stadium 1</strong>.",
+                },
+                {
+                    conditions: {
+                        riskGroup: "tidak ada",
+                        weightLoss: "tidak ada",
+                        fever: "tidak ada",
+                        infection: "tidak ada",
+                        rash: "tidak ada",
+                        swollenLymphNodes: "tidak ada",
+                        chronicFatigue: "tidak ada",
+                        cough: "tidak ada",
+                        diarrhea: "tidak ada",
+                        nightSweats: "tidak ada",
+                    },
+                    conclusion: "Anda tidak menunjukkan gejala HIV apapun.",
+                },
+            ];
 
-            <div class="mb-3">
-                <label for="headache" class="form-label">Sakit Kepala</label>
-                <select class="form-select" id="headache">
-                    <option value="tidak ada">Tidak Ada</option>
-                    <option value="ringan">Ringan</option>
-                    <option value="sedang">Sedang</option>
-                    <option value="parah">Parah</option>
-                </select>
-            </div>
+            const labels = {
+                riskGroup: "Kelompok Risiko",
+                weightLoss: "Penurunan Berat Badan",
+                fever: "Demam",
+                infection: "Infeksi",
+                rash: "Ruam Kulit",
+                swollenLymphNodes: "Kelenjar Getah Bening Membengkak",
+                chronicFatigue: "Kelelahan Kronis",
+                cough: "Batuk",
+                diarrhea: "Diare",
+                nightSweats: "Keringat Malam"
+            };
 
-            <div class="mb-3">
-                <label for="lymphNodes" class="form-label">Pembengkakan Kelenjar Getah Bening</label>
-                <select class="form-select" id="lymphNodes">
-                    <option value="tidak ada">Tidak Ada</option>
-                    <option value="ringan">Ringan</option>
-                    <option value="sedang">Sedang</option>
-                    <option value="parah">Parah</option>
-                </select>
-            </div>
+            function diagnose(conditions) {
+                let bestMatch = null;
+                let bestMatchPercentage = 0;
+                let missingSymptoms = [];
+                let nextStageSymptoms = [];
 
-            <div class="mb-3">
-                <label for="chronicFatigue" class="form-label">Kelelahan Kronis</label>
-                <select class="form-select" id="chronicFatigue">
-                    <option value="tidak ada">Tidak Ada</option>
-                    <option value="ringan">Ringan</option>
-                    <option value="sedang">Sedang</option>
-                    <option value="parah">Parah</option>
-                </select>
-            </div>
+                for (let i = 0; i < rules.length; i++) {
+                    let rule = rules[i];
+                    let matchCount = 0;
+                    let totalConditions = Object.keys(rule.conditions).length;
 
-            <div class="mb-3">
-                <label for="mouthSores" class="form-label">Luka di Sekitar Mulut atau Sariawan Berulang</label>
-                <select class="form-select" id="mouthSores">
-                    <option value="tidak ada">Tidak Ada</option>
-                    <option value="ringan">Ringan</option>
-                    <option value="sedang">Sedang</option>
-                    <option value="parah">Parah</option>
-                </select>
-            </div>
+                    for (let key in rule.conditions) {
+                        if (rule.conditions[key] === conditions[key]) {
+                            matchCount++;
+                        }
+                    }
 
-            <button type="submit" class="btn btn-primary">Dapatkan Diagnosis</button>
-        </form>
+                    const matchPercentage = (matchCount / totalConditions) * 100;
 
-        <!-- Area hasil diagnosis -->
-        <div id="result" class="mt-5 alert d-none"></div>
-    </div>
+                    if (matchPercentage > bestMatchPercentage) {
+                        bestMatch = rule.conclusion;
+                        bestMatchPercentage = matchPercentage;
 
-    <script src="logic-source/app.js"></script>
-</body>
+                        // Reset gejala yang hilang
+                        missingSymptoms = [];
+                        for (let key in rule.conditions) {
+                            if (conditions[key] !== rule.conditions[key]) {
+                                missingSymptoms.push(`${labels[key]} (${rule.conditions[key]})`);
+                            }
+                        }
 
-</html>
+                        // Check if there is a next stage
+                        if (i > 0) {
+                            let nextStage = rules[i - 1];
+                            nextStageSymptoms = [];
+                            for (let key in nextStage.conditions) {
+                                if (nextStage.conditions[key] !== conditions[key]) {
+                                    nextStageSymptoms.push(`${labels[key]} (${nextStage.conditions[key]})`);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (bestMatch) {
+                    let conclusion = `${bestMatch}`;
+
+                    if (bestMatchPercentage < 100) {
+                        conclusion += `<br/>Persentase Kecocokan: ${bestMatchPercentage.toFixed(2)}%.<br/>Gejala yang hilang: ${missingSymptoms.join(', ')}`;
+                    }
+
+                    if (nextStageSymptoms.length > 0) {
+                        conclusion += `<br/>Gejala yang bisa membawa Anda pada tahap berikutnya: ${nextStageSymptoms.join(', ')}`;
+                    }
+
+                    return conclusion;
+                }
+
+                return "Diagnosis tidak dapat dilakukan.";
+            }
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const conditions = {
+                    riskGroup: document.getElementById("riskGroup").value,
+                    weightLoss: document.getElementById("weightLoss").value,
+                    fever: document.getElementById("fever").value,
+                    infection: document.getElementById("infection").value,
+                    rash: document.getElementById("rash").value,
+                    swollenLymphNodes: document.getElementById("swollenLymphNodes").value,
+                    chronicFatigue: document.getElementById("chronicFatigue").value,
+                    cough: document.getElementById("cough").value,
+                    diarrhea: document.getElementById("diarrhea").value,
+                    nightSweats: document.getElementById("nightSweats").value,
+                };
+
+                const result = diagnose(conditions);
+
+                if (result === "Diagnosis tidak dapat dilakukan.") {
+                    resultDiv.classList.remove("alert-info");
+                    resultDiv.classList.add("alert-danger");
+                } else {
+                    resultDiv.classList.remove("alert-danger");
+                    resultDiv.classList.add("alert-info");
+                }
+
+                resultDiv.innerHTML = result;
+                resultDiv.classList.remove("d-none");
+            });
+        </script>
+    </body>
+
+    </html>
